@@ -6,17 +6,29 @@ describe('Orange HRM Tests', () => {
 const selectList = {
 
 username: "[name='username']",
-passeword: "[name='password']",
+password: "[name='password']",
 btnCadastrar: "[type='submit']",
+}
 
+const userDate = {
 
+  userSucesse: {
+    username: 'Admin',
+    password:'admin123'
+},
+
+  userFail: {
+    username: 'test',
+    password:'test'
+
+  }
 }
 
 
   it('Login com sucesso', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectList.username).type('Admin');
-    cy.get(selectList.passeword).type('admin123');
+    cy.get(selectList.username).type(userDate.userSucesse.username);
+    cy.get(selectList.password).type(userDate.userSucesse.password);
     cy.get(selectList.btnCadastrar).click();
     cy.location('pathname').should('equal', '/web/index.php/dashboard/index');
     cy.get('.oxd-topbar-header-breadcrumb-module').contains('Dashboard');
@@ -24,8 +36,8 @@ btnCadastrar: "[type='submit']",
  
   it('Login Fail', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectList.username).type('test');
-    cy.get(selectList.passeword).type('test');
+    cy.get(selectList.username).type(userDate.userFail.username);
+    cy.get(selectList.password).type(userDate.userFail.password);
     cy.get(selectList.btnCadastrar).click();
     cy.get("[role='alert']").contains('Invalid credentials');
  
