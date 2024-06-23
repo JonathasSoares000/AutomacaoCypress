@@ -1,4 +1,4 @@
-import userDate from '../fixtures/user-date.json'
+import userDate from '../fixtures/users/user-date.json'
 
 describe('Orange HRM Tests', () => {
 
@@ -10,7 +10,7 @@ btnCadastrar: "[type='submit']",
 }
 
   it('Login com sucesso', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/auth/login')
     cy.get(selectList.username).type(userDate.userSucesse.username);
     cy.get(selectList.password).type(userDate.userSucesse.password);
     cy.get(selectList.btnCadastrar).click();
@@ -19,7 +19,7 @@ btnCadastrar: "[type='submit']",
   })
  
   it('Login Fail', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/auth/login')
     cy.get(selectList.username).type(userDate.userFail.username);
     cy.get(selectList.password).type(userDate.userFail.password);
     cy.get(selectList.btnCadastrar).click();
