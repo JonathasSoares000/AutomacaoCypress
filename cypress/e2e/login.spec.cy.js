@@ -1,5 +1,4 @@
-
-
+import userDate from '../fixtures/user-date.json'
 
 describe('Orange HRM Tests', () => {
 
@@ -9,21 +8,6 @@ username: "[name='username']",
 password: "[name='password']",
 btnCadastrar: "[type='submit']",
 }
-
-const userDate = {
-
-  userSucesse: {
-    username: 'Admin',
-    password:'admin123'
-},
-
-  userFail: {
-    username: 'test',
-    password:'test'
-
-  }
-}
-
 
   it('Login com sucesso', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
